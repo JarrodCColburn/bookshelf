@@ -1,12 +1,30 @@
-import React from 'react'
+import React from 'react';
 
 class Search extends React.Component {
-  render(){
-    return ( <div className="search-books">
-            <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
-              <div className="search-books-input-wrapper">
-                {/*
+  state = {
+    value: '',
+    results: [],
+  };
+  handleChange = event => {
+    let value = event.target.value;
+    this.setState({value});
+    this.props.update(value).then(books => {
+      let results = Array.isArray(books) ? books : [];
+      this.setState({value});
+    });
+  }
+
+  render() {
+    return (
+      <div className="search-books">
+        <div className="search-books-bar">
+          <a
+            className="close-search"
+            onClick={() => this.setState({showSearchPage: false})}>
+            Close
+          </a>
+          <div className="search-books-input-wrapper">
+            {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
                   You can find these search terms here:
                   https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
@@ -14,15 +32,14 @@ class Search extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
-
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid"></ol>
-            </div>
+            <input type="text" placeholder="Search by title or author" />
           </div>
-        )
+        </div>
+        <div className="search-books-results">
+          <ol className="books-grid" />
+        </div>
+      </div>
+    );
   }
 }
-export default Search
+export default Search;

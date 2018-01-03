@@ -3,7 +3,7 @@ import Book from './Book';
 import Changer from './Changer';
 class List extends React.Component {
   updateBook = book => {
-    return (  shelf => this.props.update(book, shelf))
+    return shelf => this.props.update(book, shelf);
   };
   render() {
     let books = this.props.books || [];
@@ -24,7 +24,11 @@ class List extends React.Component {
                   <ol className="books-grid">
                     {books.filter(book => book.shelf === shelf).map(book => (
                       <Book key={book.id} book={book}>
-                        <Changer value={shelf} shelfs={shelfs} changeShelf={this.updateBook(book)}/>
+                        <Changer
+                          value={shelf}
+                          shelfs={shelfs}
+                          changeShelf={this.updateBook(book)}
+                        />
                       </Book>
                     ))}
                   </ol>

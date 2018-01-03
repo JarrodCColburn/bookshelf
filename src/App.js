@@ -9,7 +9,13 @@ class Bookshelf extends React.Component {
     books: [],
   };
   update = (book, shelf) => {
-    book.shelf = shelf
+    this.setState( prev => { 
+      let { books } = prev 
+      books = books.filter( b => b.id !== book.id)
+      book.shelf = shelf
+      if ( !shelf && shelf !== 'none') books.push(book);
+      return ({books})
+    })
     BooksAPI.update(book,shelf)
   }
   componentDidMount() {

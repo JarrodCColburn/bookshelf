@@ -13,7 +13,7 @@ class List extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li><Book /></li>
+                      <Book />
                       <li>
                         <div className="book">
                           <div className="book-top">

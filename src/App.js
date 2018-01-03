@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom'
+import {Route} from 'react-router-dom';
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
@@ -10,30 +10,45 @@ class App extends React.Component {
     books: [],
   };
   update = (book, shelf) => {
-    this.setState( prev => { 
-      let { books } = prev 
-      books = books.filter( b => b.id !== book.id)
-      book.shelf = shelf
-      if ( !shelf || shelf !== 'none') books.push(book);
-      return ({books})
-    })
-    BooksAPI.update(book,shelf)
-  }
+    this.setState(prev => {
+      let {books} = prev;
+      books = books.filter(b => b.id !== book.id);
+      book.shelf = shelf;
+      if (!shelf || shelf !== 'none') books.push(book);
+      return {books};
+    });
+    BooksAPI.update(book, shelf);
+  };
   componentDidMount() {
     BooksAPI.getAll().then(books => this.setState({books}));
   }
-  search = query => { 
-  }
+  search = query => {};
   render() {
     var shelfs = ['read', 'wantToRead', 'currentlyReading'];
     let books = this.state.books || [];
     return (
       <div className="app">
-        { true ? (
-          <Search books={books.reduce( (map, book) => map.set(book.id,book) , new Map())} shelfs={shelfs} update={this.update} searchPromise={BooksAPI.search}/>
-        ) : (
-          <List books={books} shelfs={shelfs} update={this.update} />
-        )}
+        <Route
+          path="/search"
+          render={() => (
+            <Search
+              books={books.reduce(
+                (map, book) => map.set(book.id, book),
+                new Map(),
+              )}
+              shelfs={shelfs}
+              update={this.update}
+              searchPromise={BooksAPI.search}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <List books={books} shelfs={shelfs} update={this.update} />
+          )}
+        />
       </div>
     );
   }

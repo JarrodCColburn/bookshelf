@@ -1,4 +1,5 @@
 import React from "react";
+import Changer from './Changer'
 class Book extends React.Component {
   render() {
     let book
@@ -24,17 +25,7 @@ class Book extends React.Component {
               'backgroundImage': `url(${image})`
             }}
           />
-          <div className="book-shelf-changer">
-            <select>
-              <option value="none" disabled>
-                Move to...
-              </option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+      <Changer />
         </div>
         <div className="book-title">{title}</div>
         <div className="book-authors">{author}</div>

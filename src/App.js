@@ -1,21 +1,29 @@
-import React from 'react'
-// import * as BooksAPI from './BooksAPI'
-import './App.css'
-import Search from './Search'
-import List from './List'
-var shelfs = ["read", "wantToRead", "currentlyReading"];
-var { books } = require("./books.json");
+import React from 'react';
+import * as BooksAPI from './BooksAPI';
+import './App.css';
+import Search from './Search';
+import List from './List';
+// var { books } = require("./books.json");
 class Bookshelf extends React.Component {
   state = {
-    books
+    books: [],
+  };
+  componentDidMount() {
+    BooksAPI.getAll().then(books => this.setState({books}));
   }
   render() {
+    var shelfs = ['read', 'wantToRead', 'currentlyReading'];
+    let books = this.state.books || [];
     return (
       <div className="app">
-        {this.state.showSearchPage ? (<Search books={books}/>) : <List books={books} shelfs={shelfs}/>}
+        {this.state.showSearchPage ? (
+          <Search books={books} />
+        ) : (
+          <List books={books} shelfs={shelfs} />
+        )}
       </div>
-    )
+    );
   }
 }
 
-export default Bookshelf
+export default Bookshelf;

@@ -25,7 +25,7 @@ class Book extends React.Component {
               'backgroundImage': `url(${image})`
             }}
           />
-      <Changer />
+      {this.props.children}
         </div>
         <div className="book-title">{title}</div>
         <div className="book-authors">{author}</div>

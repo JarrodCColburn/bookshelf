@@ -1,10 +1,18 @@
-import React from "react";
-import Book from "./Book";
-import Changer from "./Changer";
+import React from 'react';
+import Book from './Book';
+import Changer from './Changer';
 class List extends React.Component {
+  updateBook = book => {
+    return function(shelf) {
+      this.props.update(book, shelf);
+      debugger
+    };
+  };
   render() {
-    let books = this.props.books || []
-    let shelfs = this.props.shelfs || []
+    let books = this.props.books || [];
+    let shelfs = this.props.shelfs || [];
+    let update = this.props.update;
+
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -17,11 +25,11 @@ class List extends React.Component {
                 <h2 className="bookshelf-title">{shelf}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
-                    {books
-                      .filter(book => book.shelf === shelf)
-                      .map(book => <Book key={book.id} book={book} >
-                          <Changer value={shelf} shelfs={shelfs} />
-                        </Book>)}
+                    {books.filter(book => book.shelf === shelf).map(book => (
+                      <Book key={book.id} book={book}>
+                        <Changer value={shelf} shelfs={shelfs} changeShelf={this.updateBook(book)}/>
+                      </Book>
+                    ))}
                   </ol>
                 </div>
               </div>
@@ -29,7 +37,7 @@ class List extends React.Component {
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>
+          <a onClick={() => this.setState({showSearchPage: true})}>
             Add a book
           </a>
         </div>

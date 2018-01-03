@@ -20,7 +20,7 @@ class List extends React.Component {
                     {books
                       .filter(book => book.shelf === shelf)
                       .map(book => <Book key={book.id} book={book} >
-                          <Changer shelf={shelf} shelfs={shelfs} />
+                          <Changer value={shelf} shelfs={shelfs} />
                         </Book>)}
                   </ol>
                 </div>

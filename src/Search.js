@@ -1,4 +1,5 @@
 import React from 'react';
+import Book from './Book';
 
 class Search extends React.Component {
   state = {
@@ -8,14 +9,15 @@ class Search extends React.Component {
   handleChange = event => {
     let value = event.target.value;
     this.setState({value});
-    this.props.update(value).then(books => {
+    this.props.searchPromise(value).then(books => {
       let results = Array.isArray(books) ? books : [];
-      this.setState({value});
+      this.setState({results});
     });
-  }
+  };
 
   render() {
-    let results = this.state.results.map( book => (this.props.books.has(book.id)) ? this.props.get(book.id) : book)
+    let books = this.props.books || new Map()
+    let results = this.state.results.map( book => (books.has(book.id) ? books.get(book.id) : book));
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -25,19 +27,18 @@ class Search extends React.Component {
             Close
           </a>
           <div className="search-books-input-wrapper">
-            {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-            <input type="text" placeholder="Search by title or author" />
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid" />
+          <ol className="books-grid">
+            {results.map(book => <Book key={book.id} book={book} />)}
+          </ol>
         </div>
       </div>
     );

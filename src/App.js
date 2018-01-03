@@ -28,8 +28,8 @@ class Bookshelf extends React.Component {
     let books = this.state.books || [];
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
-          <Search books={books.reduce( (map, book) => {map.set(book.id,book.shelf) }, new Map())} shelfs={shelfs} update={this.update} searchPromise={BooksAPI.search}/>
+        { true ? (
+          <Search books={books.reduce( (map, book) => map.set(book.id,book) , new Map())} shelfs={shelfs} update={this.update} searchPromise={BooksAPI.search}/>
         ) : (
           <List books={books} shelfs={shelfs} update={this.update} />
         )}

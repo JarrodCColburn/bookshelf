@@ -1,9 +1,11 @@
 import React from 'react'
 import Book from './Book'
+var books = require("./books.json");
 class List extends React.Component {
   render(){
     return (
           <div className="list-books">
+      <div>{books.books[0].title}</div>
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>

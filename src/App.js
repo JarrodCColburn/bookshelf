@@ -8,6 +8,10 @@ class Bookshelf extends React.Component {
   state = {
     books: [],
   };
+  update = (book, shelf) => {
+    book.shelf = shelf
+    BooksAPI.update(book,shelf)
+  }
   componentDidMount() {
     BooksAPI.getAll().then(books => this.setState({books}));
   }
@@ -17,9 +21,9 @@ class Bookshelf extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Search books={books} />
+          <Search books={books} update={this.update}/>
         ) : (
-          <List books={books} shelfs={shelfs} />
+          <List books={books} shelfs={shelfs} update={this.update} />
         )}
       </div>
     );

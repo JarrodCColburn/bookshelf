@@ -1,5 +1,6 @@
 import React from 'react';
 import Book from './Book';
+import Changer from './Changer';
 
 class Search extends React.Component {
   state = {
@@ -15,9 +16,16 @@ class Search extends React.Component {
     });
   };
 
+  updateBook = book => { 
+    console.log('asdf')
+    return shelf => this.props.update(book, shelf ) 
+  }
   render() {
-    let books = this.props.books || new Map()
-    let results = this.state.results.map( book => (books.has(book.id) ? books.get(book.id) : book));
+    let shelfs = this.props.shelfs;
+    let books = this.props.books || new Map();
+    let results = this.state.results.map(
+      book => (books.has(book.id) ? books.get(book.id) : book),
+    );
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -37,7 +45,15 @@ class Search extends React.Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {results.map(book => <Book key={book.id} book={book} />)}
+            {results.map(book => (
+              <Book key={book.id} book={book}>
+                <Changer
+                  value={book.shelf}
+                  shelfs={shelfs}
+                  changeShelf={this.updateBook(book)}
+                />
+              </Book>
+            ))}
           </ol>
         </div>
       </div>

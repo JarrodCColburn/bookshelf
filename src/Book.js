@@ -1,14 +1,15 @@
 import React from "react";
 class Book extends React.Component {
   render() {
-    let books
-    if ( this.props.books ) {
-      ({ books } = this.props )
+    let book
+    // debugger
+    if ( this.props.book ) {
+      ({book} = this.props )
     }
     else {
-      return (<div />)
+      return (<li><div>Something Here</div></li>)
     }
-    let { authors, title, imageLinks } = books
+    let { authors, title, imageLinks } = book
     let author = Array.isArray(authors) && authors.length && authors[0] || ''
     let image = imageLinks && ( imageLinks.thumbnail || imageLinks.smallThumbnail ) || '';
     return (
@@ -20,9 +21,7 @@ class Book extends React.Component {
             style={{
               width: 128,
               height: 193,
-              'backgroundImage':
-                `url($(image))`
-                // 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
+              'backgroundImage': `url(${image})`
             }}
           />
           <div className="book-shelf-changer">

@@ -15,7 +15,7 @@ class List extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <Book />
+                      <Book book={books.books[0]} />
                       <li>
                         <div className="book">
                           <div className="book-top">

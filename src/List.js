@@ -3,10 +3,7 @@ import Book from './Book';
 import Changer from './Changer';
 class List extends React.Component {
   updateBook = book => {
-    return function(shelf) {
-      this.props.update(book, shelf);
-      debugger
-    };
+    return (  shelf => this.props.update(book, shelf))
   };
   render() {
     let books = this.props.books || [];

@@ -4,6 +4,7 @@ class Changer extends React.Component {
 
   handleChange = event => {
     let value = event.target.value || '';
+    this.props.changeShelf(value)
   };
   render() {
     let shelfs = this.props.shelfs || [];

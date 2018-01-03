@@ -1,9 +1,9 @@
 import React from "react";
 import Book from "./Book";
-var { books } = require("./books.json");
-var shelfs = ["read", "wantToRead", "currentlyReading"];
 class List extends React.Component {
   render() {
+    let books = this.props.books || []
+    let shelfs = this.props.shelfs || []
     return (
       <div className="list-books">
         <div className="list-books-title">

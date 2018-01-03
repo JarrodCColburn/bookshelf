@@ -1,10 +1,11 @@
+import { Route } from 'react-router-dom'
 import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import Search from './Search';
 import List from './List';
 // var { books } = require("./books.json");
-class Bookshelf extends React.Component {
+class App extends React.Component {
   state = {
     books: [],
   };
@@ -38,4 +39,4 @@ class Bookshelf extends React.Component {
   }
 }
 
-export default Bookshelf;
+export default App;

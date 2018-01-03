@@ -13,7 +13,7 @@ class Bookshelf extends React.Component {
       let { books } = prev 
       books = books.filter( b => b.id !== book.id)
       book.shelf = shelf
-      if ( !shelf && shelf !== 'none') books.push(book);
+      if ( !shelf || shelf !== 'none') books.push(book);
       return ({books})
     })
     BooksAPI.update(book,shelf)

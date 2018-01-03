@@ -15,6 +15,7 @@ class Search extends React.Component {
   }
 
   render() {
+    let results = this.state.results.map( book => (this.props.books.has(book.id)) ? this.props.get(book.id) : book)
     return (
       <div className="search-books">
         <div className="search-books-bar">

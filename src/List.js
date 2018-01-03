@@ -1,5 +1,6 @@
 import React from "react";
 import Book from "./Book";
+import Changer from "./Changer";
 class List extends React.Component {
   render() {
     let books = this.props.books || []
@@ -18,7 +19,9 @@ class List extends React.Component {
                   <ol className="books-grid">
                     {books
                       .filter(book => book.shelf === shelf)
-                      .map(book => <Book key={book.id} book={book} />)}
+                      .map(book => <Book key={book.id} book={book} >
+                          <Changer/>
+                        </Book>)}
                   </ol>
                 </div>
               </div>

@@ -2,8 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Book from './Book';
 import Changer from './Changer';
+import PropTypes from 'prop-types'
 import toTitleCase from 'to-title-case'
 class List extends React.Component {
+  static propTypes = { 
+    books:PropTypes.array,
+    shelfs:PropTypes.array,
+    update:PropTypes.func
+  }
   updateBook = book => {
     return shelf => this.props.update(book, shelf);
   };

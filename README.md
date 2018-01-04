@@ -18,3 +18,10 @@ To Install:
 
 To run Project:
 ```npm start```
+
+
+Repositories/Assets Used:
+* Reac Framework
+* Redux (react-redux-native)
+* to-title-case
+* css/icons/template from Udacity

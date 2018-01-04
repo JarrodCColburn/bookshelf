@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types'
 import React from 'react';
 import Book from './Book';
 import Changer from './Changer';
@@ -8,6 +9,12 @@ class Search extends React.Component {
     value: '',
     results: [],
   };
+  static propTypes = {
+    books: PropTypes.object,
+    shelfs: PropTypes.array,
+    update: PropTypes.func,
+    searchPromise: PropTypes.func
+  }
   handleChange = event => {
     let value = event.target.value;
     this.setState({value});
@@ -18,7 +25,6 @@ class Search extends React.Component {
   };
 
   updateBook = book => {
-    console.log('asdf');
     return shelf => this.props.update(book, shelf);
   };
   render() {

@@ -1,5 +1,4 @@
 import React from "react";
-import Changer from './Changer'
 class Book extends React.Component {
   render() {
     let book

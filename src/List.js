@@ -16,7 +16,6 @@ class List extends React.Component {
   render() {
     let books = this.props.books || [];
     let shelfs = this.props.shelfs || [];
-    let update = this.props.update;
 
     return (
       <div className="list-books">

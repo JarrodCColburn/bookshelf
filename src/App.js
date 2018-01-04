@@ -14,12 +14,6 @@ class App extends React.Component {
       this.setState({books});
     });
   }
-  componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      books = Array.isArray(books) ? books : [];
-      this.setState({books});
-    });
-  }
   update = (book, shelf) => {
     this.setState(prev => {
       let {books} = prev;

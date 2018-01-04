@@ -10,7 +10,6 @@ class Changer extends React.Component {
   render() {
     let shelfs = this.props.shelfs || [];
     let value = this.props.value || 'none';
-    console.log(value);
     return (
       <div className="book-shelf-changer">
         <select onChange={this.handleChange} value={value}>

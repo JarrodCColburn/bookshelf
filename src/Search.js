@@ -23,6 +23,7 @@ class Search extends React.Component {
     let value = event.target.value;
     this.setState({value});
     this.props.searchPromise(value.trim()).then(books => {
+      // Compare Array of Books to previously saved Books
       let results = Array.isArray(books) ? books : [];
       this.setState({results});
     });

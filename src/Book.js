@@ -10,8 +10,8 @@ class Book extends React.Component {
       return (<li><div>Something Here</div></li>)
     }
     let { authors, title, imageLinks } = book
-    let author = Array.isArray(authors) && authors.length && authors[0] || ''
-    let image = imageLinks && ( imageLinks.thumbnail || imageLinks.smallThumbnail ) || '';
+    let author = (Array.isArray(authors) && authors.length && authors[0] )|| ''
+    let image = (imageLinks && ( imageLinks.thumbnail || imageLinks.smallThumbnail )) || '';
     return (
       <li>
       <div className="book">

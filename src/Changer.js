@@ -15,15 +15,15 @@ class Changer extends React.Component {
     let shelfs = this.props.shelfs || [];
     let value = this.props.value || 'none';
     return (
-      <div className="book-shelf-changer">
+      <div className='book-shelf-changer'>
         <select onChange={this.handleChange} value={value}>
-          <optgroup label="Move to...">
+          <optgroup label='Move to...'>
             {shelfs.map(shelf => (
               <option key={shelf} value={shelf}>
                 {toTitleCase(shelf)}
               </option>
             ))}
-            <option value="none">None</option>
+            <option value='none'>None</option>
           </optgroup>
         </select>
       </div>

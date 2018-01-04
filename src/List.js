@@ -18,17 +18,17 @@ class List extends React.Component {
     let shelfs = this.props.shelfs || [];
 
     return (
-      <div className="list-books">
-        <div className="list-books-title">
+      <div className='list-books'>
+        <div className='list-books-title'>
           <h1>MyReads</h1>
         </div>
-        <div className="list-books-content">
+        <div className='list-books-content'>
           <div>
             {shelfs.map(shelf => (
-              <div className="bookshelf" key={shelf}>
-                <h2 className="bookshelf-title">{toTitleCase(shelf)}</h2>
-                <div className="bookshelf-books">
-                  <ol className="books-grid">
+              <div className='bookshelf' key={shelf}>
+                <h2 className='bookshelf-title'>{toTitleCase(shelf)}</h2>
+                <div className='bookshelf-books'>
+                  <ol className='books-grid'>
                     {books.filter(book => book.shelf === shelf).map(book => (
                       <Book key={book.id} book={book}>
                         <Changer
@@ -44,8 +44,8 @@ class List extends React.Component {
             ))}
           </div>
         </div>
-        <div className="open-search">
-          <Link to="/search" className="open-search">
+        <div className='open-search'>
+          <Link to='/search' className='open-search'>
             Add a book
           </Link>
         </div>

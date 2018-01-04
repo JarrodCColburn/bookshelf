@@ -17,10 +17,10 @@ class Book extends React.Component {
       (imageLinks && (imageLinks.thumbnail || imageLinks.smallThumbnail)) || '';
     return (
       <li>
-        <div className="book">
-          <div className="book-top">
+        <div className='book'>
+          <div className='book-top'>
             <div
-              className="book-cover"
+              className='book-cover'
               style={{
                 width: 128,
                 height: 193,
@@ -29,8 +29,8 @@ class Book extends React.Component {
             />
             {this.props.children}
           </div>
-          <div className="book-title">{title}</div>
-          <div className="book-authors">{author}</div>
+          <div className='book-title'>{title}</div>
+          <div className='book-authors'>{author}</div>
         </div>
       </li>
     );

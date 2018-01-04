@@ -34,12 +34,12 @@ class Search extends React.Component {
       book => (books.has(book.id) ? books.get(book.id) : book),
     );
     return (
-      <div className="search-books">
-        <div className="search-books-bar">
+      <div className='search-books'>
+        <div className='search-books-bar'>
           <Link to="/" className="close-search">
             Close
           </Link>
-          <div className="search-books-input-wrapper">
+          <div className='search-books-input-wrapper'>
             <input
               type="text"
               placeholder="Search by title or author"
@@ -48,8 +48,8 @@ class Search extends React.Component {
             />
           </div>
         </div>
-        <div className="search-books-results">
-          <ol className="books-grid">
+        <div className='search-books-results'>
+          <ol className='books-grid'>
             {results.map(book => (
               <Book key={book.id} book={book}>
                 <Changer

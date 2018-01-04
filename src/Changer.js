@@ -1,3 +1,4 @@
+import toTitleCase from 'to-title-case'
 import React from 'react';
 class Changer extends React.Component {
   state = {};
@@ -18,7 +19,7 @@ class Changer extends React.Component {
           </option>
           {shelfs.map(shelf => (
             <option key={shelf} value={shelf}>
-              {shelf}
+              {toTitleCase(shelf)}
             </option>
           ))}
           <option value="none">None</option>

@@ -14,15 +14,14 @@ class Changer extends React.Component {
     return (
       <div className="book-shelf-changer">
         <select onChange={this.handleChange} value={value}>
-          <option value="none" disabled>
-            Move to...
-          </option>
+      <optgroup label="Move to..." >
           {shelfs.map(shelf => (
             <option key={shelf} value={shelf}>
               {toTitleCase(shelf)}
             </option>
           ))}
           <option value="none">None</option>
+      </optgroup>
         </select>
       </div>
     );

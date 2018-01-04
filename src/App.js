@@ -4,7 +4,6 @@ import * as BooksAPI from './BooksAPI';
 import './App.css';
 import Search from './Search';
 import List from './List';
-// var { books } = require("./books.json");
 class App extends React.Component {
   state = {
     books: [],
@@ -20,7 +19,10 @@ class App extends React.Component {
     BooksAPI.update(book, shelf);
   };
   componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({books}));
+    BooksAPI.getAll().then(books => {
+      books = Array.isArray(books) ? books : [];
+      this.setState({books});
+    });
   }
   search = query => {};
   render() {

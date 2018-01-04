@@ -17,10 +17,10 @@ class Search extends React.Component {
     });
   };
 
-  updateBook = book => { 
-    console.log('asdf')
-    return shelf => this.props.update(book, shelf ) 
-  }
+  updateBook = book => {
+    console.log('asdf');
+    return shelf => this.props.update(book, shelf);
+  };
   render() {
     let shelfs = this.props.shelfs;
     let books = this.props.books || new Map();
@@ -30,11 +30,9 @@ class Search extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-
-<Link
-  to='/'
-  className='close-search'
-  >Close</Link>
+          <Link to="/" className="close-search">
+            Close
+          </Link>
           <div className="search-books-input-wrapper">
             <input
               type="text"

@@ -8,6 +8,18 @@ class App extends React.Component {
   state = {
     books: [],
   };
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      books = Array.isArray(books) ? books : [];
+      this.setState({books});
+    });
+  }
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      books = Array.isArray(books) ? books : [];
+      this.setState({books});
+    });
+  }
   update = (book, shelf) => {
     this.setState(prev => {
       let {books} = prev;
@@ -18,13 +30,7 @@ class App extends React.Component {
     });
     BooksAPI.update(book, shelf);
   };
-  componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      books = Array.isArray(books) ? books : [];
-      this.setState({books});
-    });
-  }
-  search = query => {};
+  arr2map = arr => arr.reduce((map, book) => map.set(book.id, book), new Map());
   render() {
     var shelfs = ['read', 'wantToRead', 'currentlyReading'];
     let books = this.state.books || [];
@@ -34,10 +40,7 @@ class App extends React.Component {
           path="/search"
           render={() => (
             <Search
-              books={books.reduce(
-                (map, book) => map.set(book.id, book),
-                new Map(),
-              )}
+              books={this.arr2map(books)}
               shelfs={shelfs}
               update={this.update}
               searchPromise={BooksAPI.search}

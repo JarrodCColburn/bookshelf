@@ -1,6 +1,10 @@
 import toTitleCase from 'to-title-case';
 import PropTypes from 'prop-types';
 import React from 'react';
+/** 
+ * @description Allows for options to select shelf
+ *
+ */
 class Changer extends React.Component {
   static propTypes = {
     value: PropTypes.string,

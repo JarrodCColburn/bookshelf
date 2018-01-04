@@ -10,7 +10,7 @@ class Book extends React.Component {
     let book;
     if (this.props.book) {
       ({book} = this.props);
-    }  
+    }
     let {authors, title, imageLinks} = book;
     let author = (Array.isArray(authors) && authors.length && authors[0]) || '';
     let image =

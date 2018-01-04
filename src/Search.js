@@ -1,9 +1,13 @@
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import React from 'react';
 import Book from './Book';
 import Changer from './Changer';
 
+/**
+ * @description Allows for querying of books
+ * @description Displays book results
+ */
 class Search extends React.Component {
   state = {
     value: '',
@@ -13,12 +17,12 @@ class Search extends React.Component {
     books: PropTypes.object,
     shelfs: PropTypes.array,
     update: PropTypes.func,
-    searchPromise: PropTypes.func
-  }
+    searchPromise: PropTypes.func,
+  };
   handleChange = event => {
     let value = event.target.value;
     this.setState({value});
-    this.props.searchPromise(value).then(books => {
+    this.props.searchPromise(value.trim()).then(books => {
       let results = Array.isArray(books) ? books : [];
       this.setState({results});
     });
@@ -34,12 +38,12 @@ class Search extends React.Component {
       book => (books.has(book.id) ? books.get(book.id) : book),
     );
     return (
-      <div className='search-books'>
-        <div className='search-books-bar'>
+      <div className="search-books">
+        <div className="search-books-bar">
           <Link to="/" className="close-search">
             Close
           </Link>
-          <div className='search-books-input-wrapper'>
+          <div className="search-books-input-wrapper">
             <input
               type="text"
               placeholder="Search by title or author"
@@ -48,8 +52,8 @@ class Search extends React.Component {
             />
           </div>
         </div>
-        <div className='search-books-results'>
-          <ol className='books-grid'>
+        <div className="search-books-results">
+          <ol className="books-grid">
             {results.map(book => (
               <Book key={book.id} book={book}>
                 <Changer

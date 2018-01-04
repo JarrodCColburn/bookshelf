@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+/**
+ * @description Represents a book
+ */
 class Book extends React.Component {
   static propTypes = {
     value: PropTypes.string,
@@ -7,20 +10,17 @@ class Book extends React.Component {
     changeShelf: PropTypes.func,
   };
   render() {
-    let book;
-    if (this.props.book) {
-      ({book} = this.props);
-    }
+    let book = this.props.book || {};
     let {authors, title, imageLinks} = book;
     let author = (Array.isArray(authors) && authors.length && authors[0]) || '';
     let image =
       (imageLinks && (imageLinks.thumbnail || imageLinks.smallThumbnail)) || '';
     return (
       <li>
-        <div className='book'>
-          <div className='book-top'>
+        <div className="book">
+          <div className="book-top">
             <div
-              className='book-cover'
+              className="book-cover"
               style={{
                 width: 128,
                 height: 193,
@@ -29,8 +29,8 @@ class Book extends React.Component {
             />
             {this.props.children}
           </div>
-          <div className='book-title'>{title}</div>
-          <div className='book-authors'>{author}</div>
+          <div className="book-title">{title}</div>
+          <div className="book-authors">{author}</div>
         </div>
       </li>
     );

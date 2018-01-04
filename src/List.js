@@ -4,12 +4,20 @@ import Book from './Book';
 import Changer from './Changer';
 import PropTypes from 'prop-types'
 import toTitleCase from 'to-title-case'
+/**
+ * @description Represents a bookcase
+ */
 class List extends React.Component {
   static propTypes = { 
     books:PropTypes.array,
     shelfs:PropTypes.array,
     update:PropTypes.func
   }
+  /**
+   * @description Binds Shelf changing option to a Book
+   * @param {object} book - the book have options
+   * @return {function}
+   */
   updateBook = book => {
     return shelf => this.props.update(book, shelf);
   };

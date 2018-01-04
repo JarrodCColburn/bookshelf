@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Book from './Book';
 import Changer from './Changer';
+import toTitleCase from 'to-title-case'
 class List extends React.Component {
   updateBook = book => {
     return shelf => this.props.update(book, shelf);
@@ -20,7 +21,7 @@ class List extends React.Component {
           <div>
             {shelfs.map(shelf => (
               <div className="bookshelf" key={shelf}>
-                <h2 className="bookshelf-title">{shelf}</h2>
+                <h2 className="bookshelf-title">{toTitleCase(shelf)}</h2>
                 <div className="bookshelf-books">
                   <ol className="books-grid">
                     {books.filter(book => book.shelf === shelf).map(book => (

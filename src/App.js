@@ -5,9 +5,9 @@ import './App.css';
 import Search from './Search';
 import List from './List';
 /**
- * @description Maps array of Books to a Map<book.id,book> 
+ * @description Maps array of Books to a Map<book.id,book>
  * @param {Array} arr - The array of books
- * @returns {Map} map 
+ * @returns {Map} map
  */
 const arr2map = arr =>
   arr.reduce((map, book) => map.set(book.id, book), new Map());
@@ -21,6 +21,12 @@ class App extends React.Component {
       this.setState({books});
     });
   }
+  /**
+   * @description Updates Books relative to shelfs
+   * @description on client and server (via API)
+   * @param {object} book - the book to be updated
+   * @param {string} shelf - the shelf to move book
+   */
   update = (book, shelf) => {
     this.setState(prev => {
       let {books} = prev;
@@ -37,7 +43,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <Route
-          path='/search'
+          path="/search"
           render={() => (
             <Search
               books={arr2map(books)}
@@ -49,7 +55,7 @@ class App extends React.Component {
         />
         <Route
           exact
-          path='/'
+          path="/"
           render={() => (
             <List books={books} shelfs={shelfs} update={this.update} />
           )}
